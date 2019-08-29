@@ -1,18 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Noticeboard as Feshdesk } from 'notice-board-freshdesk';
-
-const auth = {
-  username: '',
-  password: ''
-}
+import Layout from './components/Layout';
 
 function App() {
   return (
     <div className="App">
-      <Feshdesk subdomain={'ucieducation'} auth={auth} />
+      <Layout />
     </div>
   );
 }
