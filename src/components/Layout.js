@@ -1,9 +1,9 @@
 import React from 'react';
 import {Container, Row, Col} from 'reactstrap';
-import ComponentA from './component-A';
 
-import {freshdesk as fdeskAuth} from '../credentials.json'; // TODO: REMOVE credential.json... bad practice.
+import {freshdesk as fdeskAuth, gcalendar as calAuth} from '../credentials.json'; // TODO: REMOVE credential.json... bad practice.
 import {Noticeboard as Freshdesk} from 'notice-board-freshdesk';
+import {StudentSchedule, TechSchedule} from 'notice-board-gcalendar';
 
 import './Layout.scss';
 
@@ -15,15 +15,15 @@ function Layout () {
         <Col xs="4">
           <Row>
             <Col xs="12">
-              {/*TODO: Add Calendar Component*/}
+              <TechSchedule {...calAuth.tech} />
             </Col>
             <Col xs="12">
-              {/*TODO: Add Student Schedule*/}
+              <StudentSchedule {...calAuth.student} />
             </Col>
           </Row>
         </Col>
 
-        <Col xs={"5"}>
+        <Col xs="5">
           <Freshdesk subdomain={'ucieducation'} auth={fdeskAuth} limit={10} />
         </Col>
       </Row>

@@ -1,5 +1,14 @@
+@import "../styles/includes";
+
 .Layout.container {
-  width: 100%;
+  //width: 100%;
+  //max-width: 100%;
+  //font-size: $font-size-base * 1.5;
+  //background-color: rgba($uci-primary-blue, 0.65);
+
+  position: relative;
   margin: 0;
-  max-width: 100%;
+  height: $screen-height;
+  width: $screen-width;
+
 }
