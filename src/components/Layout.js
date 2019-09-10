@@ -5,36 +5,44 @@ import {freshdesk as fdeskAuth, gcalendar as calAuth} from '../credentials.json'
 import {Noticeboard as Freshdesk} from 'notice-board-freshdesk';
 import {StudentSchedule, TechSchedule} from 'notice-board-gcalendar';
 
+import Background from './Background';
+
 import './Layout.scss';
+
 
 function Layout () {
   return (
-    <Container className="Layout">
+    <div>
+      <Background />
 
-      <Row>
-        <Col xs="4">
-          <Row>
-            <Col xs="12">
-              <TechSchedule {...calAuth.tech} />
-            </Col>
-            <Col xs="12">
-              <StudentSchedule {...calAuth.student} />
-            </Col>
-          </Row>
-        </Col>
+      <Container className="Layout">
 
-        <Col xs="5">
-          <Freshdesk subdomain={'ucieducation'} auth={fdeskAuth} limit={10} />
-        </Col>
-      </Row>
 
-      <Row>
-        <Col>
-          {/* TODO: Add Lower Ticker */}
-        </Col>
-      </Row>
+        <Row>
+          <Col xs="4">
+            <Row>
+              <Col xs="12">
+                <TechSchedule {...calAuth.tech} />
+              </Col>
+              <Col xs="12">
+                <StudentSchedule {...calAuth.student} />
+              </Col>
+            </Row>
+          </Col>
 
-    </Container>
+          <Col xs="5">
+            <Freshdesk subdomain={'ucieducation'} auth={fdeskAuth} limit={10} />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            {/* TODO: Add Lower Ticker */}
+          </Col>
+        </Row>
+
+      </Container>
+    </div>
   );
 }
 

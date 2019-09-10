@@ -10,5 +10,9 @@
   margin: 0;
   height: $screen-height;
   width: $screen-width;
+  max-width: unset;
+  padding: 20px;
+
+  opacity: 0.6;
 
 }
