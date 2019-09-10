@@ -1,0 +1,42 @@
+@import "../../styles/includes";
+
+
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: $screen-width;
+  height: $screen-height;
+
+  .background-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transition: background-image .3s ease-in-out;
+    background-repeat: no-repeat;
+
+    &.flip-h {
+      -moz-transform: scaleX(-1);
+      -o-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      filter: FlipH;
+      -ms-filter: "FlipH";
+    }
+    &.flip-v {
+      -moz-transform: scaleY(-1);
+      -o-transform: scaleY(-1);
+      -webkit-transform: scaleY(-1);
+      transform: scaleY(-1);
+      filter: FlipV;
+      -ms-filter: "FlipV";
+    }
+
+
+  }
+
+
+}
