@@ -21,6 +21,16 @@
     margin-bottom: 5em;
     border-radius: 30px;
 
+    &.calendar-height {
+      max-height: 1200px;
+      overflow: hidden;
+    }
+
+    &.freshdesk-height {
+      max-height: 1800px;
+      overflow: hidden;
+    }
+
     .title {
       color: $uci-primary-yellow;
       font-size: 4em;
@@ -28,15 +38,7 @@
       letter-spacing: 2px;
       padding-bottom: 30px;
     }
-  }
-  .pillbox.calendar-height {
-    max-height: 1200px;
-    overflow: hidden;
-  }
 
-  .pillbox.freshdesk-height {
-    max-height: 1800px;
-    overflow: hidden;
   }
 
 }
