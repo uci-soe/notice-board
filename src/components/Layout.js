@@ -20,13 +20,13 @@ function Layout () {
           <Col xs="4">
             <Row>
               <Col xs="12">
-                <div className="gCal calendar-height">
+                <div className="pillbox calendar-height">
                   <h2 className="title">Google Calendar</h2>
                   <TechSchedule {...calAuth.tech} />
                 </div>
               </Col>
               <Col xs="12">
-                <div className="gCal">
+                <div className="pillbox">
                   <h2 className="title">Student Schedule</h2>
                   <StudentSchedule {...calAuth.student} />
                 </div>
@@ -35,7 +35,7 @@ function Layout () {
           </Col>
 
           <Col xs="5">
-            <div className="gCal freshdesk-height">
+            <div className="pillbox freshdesk-height">
               <h2 className="title">Freshdesk Tickets</h2>
               <Freshdesk subdomain={'ucieducation'} auth={fdeskAuth} limit={10} displayResolved={false}/>
             </div>

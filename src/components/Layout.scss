@@ -14,7 +14,7 @@
   padding: 7em;
   opacity: 0.9;
 
-  .gCal {
+  .pillbox {
     background-color: rgba($uci-primary-blue, 0.45);
     padding: 4em;
     margin-right: 4em;
@@ -29,12 +29,12 @@
       padding-bottom: 30px;
     }
   }
-  .gCal.calendar-height {
+  .pillbox.calendar-height {
     max-height: 1200px;
     overflow: hidden;
   }
 
-  .gCal.freshdesk-height {
+  .pillbox.freshdesk-height {
     max-height: 1800px;
     overflow: hidden;
   }
