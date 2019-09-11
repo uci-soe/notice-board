@@ -7,26 +7,26 @@ import Image from './Image';
 const HOUR = 1000 * 60 * 60;
 
 
-function Background ({delay = 1000*10}) {
+function Background ({delay = HOUR}) {
   const [image, setImage] = useState(random(images));
-  // const [image, setImage] = useState(images[14]);
+
+
+  let timeout;
+  const update = window.abc = (thisDelay) => {
+    return setTimeout(() => {
+      setImage(random(images));
+      clearTimeout(timeout);
+      timeout = update();
+    }, thisDelay);
+  };
 
   useEffect(() => {
-    let timeout;
-    const update = () => {
-      return setTimeout(() => {
-        setImage(random(images));
-        timeout = update();
-      }, delay);
-    };
-
-    update();
+    update(delay);
 
     return () => {
       clearTimeout(timeout);
     }
   }, [delay]);
-
 
   return (
     <div className='background-container'>
@@ -38,8 +38,6 @@ function Background ({delay = 1000*10}) {
 }
 
 export default Background;
-
-
 
 
 
