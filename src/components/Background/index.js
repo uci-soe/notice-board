@@ -6,7 +6,8 @@ import Image from './Image';
 
 const HOUR = 1000 * 60 * 60;
 
-function Background ({delay = HOUR}) {
+
+function Background ({delay = 1000*10}) {
   const [image, setImage] = useState(random(images));
   // const [image, setImage] = useState(images[14]);
 
@@ -26,14 +27,22 @@ function Background ({delay = HOUR}) {
     }
   }, [delay]);
 
+
   return (
     <div className='background-container'>
+
       <Image {...image} />
+
     </div>
   );
 }
 
 export default Background;
+
+
+
+
+
 
 
 function random (array) {
