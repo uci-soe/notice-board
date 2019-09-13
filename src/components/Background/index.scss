@@ -15,7 +15,7 @@
     top: 0;
     height: 100%;
     width: 100%;
-    transition: background-image .3s ease-in-out;
+    //transition: opacity 2s ease-in-out;
     background-repeat: no-repeat;
 
     &.flip-h {
@@ -35,6 +35,9 @@
       -ms-filter: "FlipV";
     }
 
+    &.hide {
+      opacity: 0 !important;
+    }
 
   }
 

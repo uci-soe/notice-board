@@ -1,12 +1,89 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import './index.scss';
 
-function Image ({ src, size, position, flip }) {
+// const images = [
+//   {
+//     src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAGWQAAABGCAYAAADvPcsnAAAHsUlEQVR42u3dAQ0AIAzAsN+/aMAGS5v52J6ZFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMD/1pAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyDBkAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIMWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAMQxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgw5AFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyLjiO4u71eYORwAAAABJRU5ErkJggg==",
+//     size: { "w": "4700px", "h": "4700px" },
+//     position: { "x": "center", "y": "center" }
+//   },
+//   {
+//     src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAAb0lEQVR42u3QwQAAAAgEsLLIX/QC6BPAhrCuSYqjxYgRI0aMGDFixIgRIwYxYsSIESNGjBgxYsQgRowYMWLEiBEjRowYxIgRI0aMGDFixIgRgxgxYsSIESNGjBgxYsSIESNGjBgxYsSIESNGDGJ+FhAnkku7WRqPAAAAAElFTkSuQmCC",
+//     size: { "w": "4700px", "h": "4700px" },
+//     position: { "x": "center", "y": "center" }
+//   },
+//   {
+//     src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAAb0lEQVR42u3QwQAAAAgEsPLnjOMC6BPAhrCeSoqjxYgRI0aMGDFixIgRIwYxYsSIESNGjBgxYsQgRowYMWLEiBEjRowYxIgRI0aMGDFixIgRgxgxYsSIESNGjBgxYsSIESNGjBgxYsSIESNGDGJ+FqQqyllLE7pdAAAAAElFTkSuQmCC",
+//     size: { "w": "4700px", "h": "4700px" },
+//     position: { "x": "center", "y": "center" }
+//   },
+// ];
+
+function Image ({ src, size, position, flip, transDuration = '500ms' }) {
+  const [topImg, setTop] = useState({ src, size, position, flip, transDuration });
+  const [bottomImg, setBottom] = useState({ src, size, position, flip, transDuration });
+
+  useEffect(() => {
+    let swap;
+
+    // console.log(src);
+    loadImage(src)
+      .then(() => {
+        // console.log('loaded');
+
+        setBottom({src, size, position, flip});
+        clearTimeout(swap);
+
+        // get numbers from transitionDuration string
+        let [_, delay] = transDuration.trim().match(/^([\d.]+)/);
+
+        setTop({...topImg, hidden: true});
+        swap = setTimeout(() => {
+          // console.log('swap');
+          setTop({src, size, position, flip, transDuration});
+        }, 100 + parseFloat(delay)); // set delay to be 100ms after transition stops
+
+
+      })
+      .catch(err => {
+        console.error(err.stack);
+      })
+    ;
+
+    return () => {
+      clearTimeout(swap);
+    };
+
+  }, [src, size, position, flip]);
+
+  // const [opacity, setOpacity] = useState(1);
+  // let timeout = setTimeout(() => {
+  //   setOpacity(0);
+  // }, 1000)
+
+  return (
+    <div style={({height:"100%",width:"100%", margin: 0})}>
+
+      {/* First Image hides behind second image */}
+      <div {...process(bottomImg)} />
+
+      {/* This image is visible */}
+      <div {...process(topImg)} />
+
+    </div>
+  );
+}
+
+export default Image;
+
+
+function process ({ src, size, position, flip, transDuration, hidden = false }) {
   const styles = {
     backgroundImage: `url(${src})`,
     backgroundSize: `${size.w} ${size.h}`,
     backgroundPosition: `${position.x} ${position.y}`,
+    ...(transDuration && {transition: `opacity ${transDuration} ease-in-out`}),
   };
 
   let classNames = ['background-image'];
@@ -16,12 +93,22 @@ function Image ({ src, size, position, flip }) {
     classNames.push('flip-v');
   }
 
-  return (
-    <div className={classNames.join(' ')} style={styles}></div>
-  );
+  if (hidden) {
+    classNames.push('hide');
+  }
+
+  return {
+    className: classNames.join(' '),
+    style: styles
+  }
 }
-
-export default Image;
-
-
-
+function loadImage (src) {
+  return new Promise((res, rej) => {
+    let img = new window.Image();
+    img.onload = (...args) => {
+      res(img, ...args);
+    };
+    img.onerror = rej;
+    img.src = src;
+  });
+}
