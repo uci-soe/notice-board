@@ -6,6 +6,7 @@ import {Noticeboard as Freshdesk} from 'notice-board-freshdesk';
 import {StudentSchedule, TechSchedule} from 'notice-board-gcalendar';
 
 import Background from './Background';
+import { NoTickets } from './NoContent';
 
 import './Layout.scss';
 
@@ -37,7 +38,7 @@ function Layout () {
           <Col xs="5">
             <div className="pillbox freshdesk-height">
               <h2 className="title">Freshdesk Tickets</h2>
-              <Freshdesk subdomain={'ucieducation'} auth={fdeskAuth} limit={10} displayResolved={false}/>
+              <Freshdesk subdomain={'ucieducation'} auth={fdeskAuth} limit={10} displayResolved={false} noTickets={NoTickets} />
             </div>
           </Col>
         </Row>
