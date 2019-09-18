@@ -38,7 +38,7 @@ function Layout () {
           <Col xs="6">
             <div className="pillbox freshdesk-height">
               <h2 className="title">Freshdesk Tickets</h2>
-              <Freshdesk noTickets={NoTickets} subdomain='ucieducation' auth={fdeskAuth} displayResolved={true}/>
+              <Freshdesk noTickets={NoTickets} subdomain='ucieducation' auth={fdeskAuth} displayResolved={true} />
             </div>
           </Col>
         </Row>
