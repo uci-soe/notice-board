@@ -35,10 +35,10 @@ function Layout () {
             </Row>
           </Col>
 
-          <Col xs="5">
+          <Col xs="6">
             <div className="pillbox freshdesk-height">
               <h2 className="title">Freshdesk Tickets</h2>
-              <Freshdesk subdomain={'ucieducation'} auth={fdeskAuth} limit={10} displayResolved={false} noTickets={NoTickets} />
+              <Freshdesk noTickets={NoTickets} subdomain='ucieducation' auth={fdeskAuth} displayResolved={true}/>
             </div>
           </Col>
         </Row>

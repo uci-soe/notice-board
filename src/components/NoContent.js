@@ -4,7 +4,9 @@ import './NoContent.scss';
 
 export function NoTickets () {
   return (
-    <div></div>
+    <div className="noTickets">
+      <p>There are currently no opening or pending tickets. Please check back tomorrow.</p>
+    </div>
   );
 }
 

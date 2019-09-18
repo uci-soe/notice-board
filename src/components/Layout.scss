@@ -11,32 +11,32 @@
   height: $screen-height;
   width: $screen-width;
   max-width: unset;
-  padding: 7em;
+  padding: 3rem;
   opacity: 0.9;
 
   .pillbox {
     background-color: rgba($uci-primary-blue, 0.45);
-    padding: 4em;
-    margin-right: 4em;
-    margin-bottom: 5em;
-    border-radius: 30px;
+    padding: 1.5rem;
+    margin-right: 1.5rem;
+    margin-bottom: 2.0rem;
+    border-radius: 20px;
 
     &.calendar-height {
-      max-height: 1200px;
+      max-height: 630px;
       overflow: hidden;
     }
 
     &.freshdesk-height {
-      max-height: 1800px;
+      max-height: 920px;
       overflow: hidden;
     }
 
     .title {
       color: $uci-primary-yellow;
-      font-size: 4em;
+      font-size: 2.7rem;
       font-weight: bold;
-      letter-spacing: 2px;
-      padding-bottom: 30px;
+      letter-spacing: 1px;
+      padding-bottom: 20px;
     }
 
   }
