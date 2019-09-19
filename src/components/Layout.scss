@@ -11,13 +11,13 @@
   height: $screen-height;
   width: $screen-width;
   max-width: unset;
-  padding: 3rem;
+  padding: 3rem 7rem 3rem 3rem;
   opacity: 0.9;
 
   .pillbox {
     background-color: rgba($uci-primary-blue, 0.45);
-    padding: 1.5rem;
-    margin-right: 1.5rem;
+    padding: 1.2rem 1em;
+    //margin-right: 1.5rem; // this is why gutters exist
     margin-bottom: 2.0rem;
     border-radius: 20px;
 
@@ -33,10 +33,31 @@
 
     .title {
       color: $uci-primary-yellow;
-      font-size: 2.7rem;
+      font-size: 2.4rem;
       font-weight: bold;
       letter-spacing: 1px;
-      padding-bottom: 20px;
+      //padding-bottom: 20px; // don't use padding bottom + inherent margin bottom, unless you are also adding an underline
+      margin-bottom: .5em;
+    }
+
+    .tickets {
+      .freshdesk-list {
+        margin: 0 0 1em 0;
+        padding: 1.5em !important;
+
+        .fr-tag {
+          color: $uci-primary-blue;
+          padding: 0.5em 0.75em;
+        }
+
+        .fr-title {
+          margin-top: 0;
+        }
+        .fr-description {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
     }
 
   }
