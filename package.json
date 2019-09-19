@@ -20,6 +20,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://tech-notice-board.education.uci.edu --acl public-read",
     "test": "react-scripts test",
     "eject": "0 && react-scripts eject"
   },
