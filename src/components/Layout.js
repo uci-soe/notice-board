@@ -18,7 +18,7 @@ function Layout () {
 
       <Container className="Layout">
         <Row>
-          <Col xs="4">
+          <Col xs="5">
             <Row>
               <Col xs="12">
                 <div className="pillbox calendar-height">
@@ -35,7 +35,7 @@ function Layout () {
             </Row>
           </Col>
 
-          <Col xs="6">
+          <Col xs="7">
             <div className="pillbox freshdesk-height">
               <h2 className="title">Freshdesk Tickets</h2>
               <Freshdesk noTickets={NoTickets} subdomain='ucieducation' auth={fdeskAuth} displayResolved={true} />
