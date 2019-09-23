@@ -87,7 +87,7 @@
       padding-left: 1.75em;
       border-radius: $border-radius;
       border-left: inherit;
-
+      box-shadow: 1px 12px 26px -11px rgba(0,0,0,0.75);
       position: relative;
 
       &::before {
@@ -124,6 +124,7 @@
       border-top: 0;
       position: relative;
       transition: all 0.5s ease-in-out;
+      box-shadow: 1px 12px 26px -11px rgba(0,0,0,0.75);
 
       .student-name {
         position: absolute;
