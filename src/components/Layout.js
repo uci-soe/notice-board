@@ -6,9 +6,12 @@ import {Noticeboard as Freshdesk} from 'notice-board-freshdesk';
 import {StudentSchedule, TechSchedule} from 'notice-board-gcalendar';
 
 import Background from './Background';
-import { NoTickets } from './NoContent';
+import {NoTickets} from './NoContent';
 
 import './Layout.scss';
+import Simplebar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
+
 
 
 function Layout () {
@@ -23,13 +26,17 @@ function Layout () {
               <Col xs="12">
                 <div className="pillbox calendar-height">
                   <h2 className="title">Google Calendar</h2>
-                  <TechSchedule {...calAuth.tech} />
+                  <Simplebar className="scroll-wrapper">
+                    <TechSchedule {...calAuth.tech} />
+                  </Simplebar>
                 </div>
               </Col>
               <Col xs="12">
                 <div className="pillbox student-schedule">
                   <h2 className="title">Student Schedule</h2>
-                  <StudentSchedule {...calAuth.student} />
+                  <Simplebar className="scroll-wrapper">
+                    <StudentSchedule {...calAuth.student} />
+                  </Simplebar>
                 </div>
               </Col>
             </Row>
@@ -38,7 +45,9 @@ function Layout () {
           <Col xs="7">
             <div className="pillbox freshdesk-height">
               <h2 className="title">Freshdesk Tickets</h2>
-              <Freshdesk noTickets={NoTickets} subdomain='ucieducation' auth={fdeskAuth} displayResolved={true} />
+              <Simplebar className="scroll-wrapper">
+                <Freshdesk noTickets={NoTickets} subdomain='ucieducation' auth={fdeskAuth} displayResolved={true} />
+              </Simplebar>
             </div>
           </Col>
         </Row>
