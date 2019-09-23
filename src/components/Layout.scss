@@ -113,6 +113,10 @@
       background-color: $uci-primary-blue;
       padding: 1.5em;
       border-radius: 10px;
+
+      .time {
+        padding-bottom: 0;
+      }
     }
   }
 
