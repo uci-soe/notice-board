@@ -21,15 +21,20 @@
     margin-bottom: 2.0rem;
     border-radius: 20px;
 
-    //&.calendar-height {
-    //  max-height: 630px;
-    //  overflow: hidden;
-    //  overflow-y: scroll;
+
+    //&:last-of-type {
+    //  margin-bottom: 0;
     //}
 
+    &.calendar-height {
+      .scroll-wrapper {
+        max-height: 880px - 273px;
+      }
+    }
     &.freshdesk-height {
-      max-height: 920px;
-      overflow: hidden;
+      .scroll-wrapper {
+        max-height: 880px;
+      }
     }
 
     .title {
@@ -42,9 +47,7 @@
     }
 
     .tickets {
-      max-height: 817px;
-      overflow: hidden;
-      overflow-y: scroll;
+
       .freshdesk-list {
         margin: 0 0 1em 0;
         padding: 1.5em !important;
@@ -68,18 +71,18 @@
 
 
   .student-schedule {
+    .scroll-wrapper{
+      white-space: nowrap;
+    }
     .calendar-events {
       white-space: nowrap;
-      overflow-y: scroll;
-
+      display: inline-block;
+      //overflow-y: scroll;
     }
   }
 
   .calendar-events {
     $border-radius: 10px;
-
-    overflow-y: scroll;
-    max-height: 534.10px;
 
     .event {
       background-color: $uci-primary-blue;
