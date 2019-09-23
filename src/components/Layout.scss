@@ -21,10 +21,11 @@
     margin-bottom: 2.0rem;
     border-radius: 20px;
 
-    &.calendar-height {
-      max-height: 630px;
-      overflow: hidden;
-    }
+    //&.calendar-height {
+    //  max-height: 630px;
+    //  overflow: hidden;
+    //  overflow-y: scroll;
+    //}
 
     &.freshdesk-height {
       max-height: 920px;
@@ -41,6 +42,9 @@
     }
 
     .tickets {
+      max-height: 817px;
+      overflow: hidden;
+      overflow-y: scroll;
       .freshdesk-list {
         margin: 0 0 1em 0;
         padding: 1.5em !important;
@@ -60,6 +64,110 @@
       }
     }
 
+  }
+
+
+  .student-schedule {
+    .calendar-events {
+      white-space: nowrap;
+      overflow-y: scroll;
+
+    }
+  }
+
+  .calendar-events {
+    $border-radius: 10px;
+
+    overflow-y: scroll;
+    max-height: 534.10px;
+
+    .event {
+      background-color: $uci-primary-blue;
+      padding: 1.5em;
+      padding-left: 1.75em;
+      border-radius: $border-radius;
+      border-left: inherit;
+      box-shadow: 1px 12px 26px -11px rgba(0,0,0,0.75);
+      position: relative;
+      margin-bottom: 1em;
+
+      &::before {
+        display: block;
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 0.75em;
+        background-color: $uci-primary-yellow;
+        border-radius: $border-radius 0 0 $border-radius;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .summary, .time { // reset
+        padding-bottom: 0;
+      }
+
+      .summary {
+        //margin-bottom: 0.4em;
+      }
+
+    }
+
+
+    .student-event {
+      background-color: $uci-primary-blue;
+      padding: 2em 1.5em 0.5em 1.5em;
+      border-radius: 10px;
+      border-top: 0;
+      position: relative;
+      transition: all 0.5s ease-in-out;
+      box-shadow: 1px 12px 26px -11px rgba(0,0,0,0.75);
+
+      .student-name {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1.75em;
+        line-height: 1.75em;
+        background-color: $uci-primary-yellow;
+        border-radius: $border-radius $border-radius 0 0;
+        font-size: 16px;
+        color: $uci-primary-blue;
+        transition: all 0.5s ease-in-out;
+      }
+      .time {
+        padding-bottom: 0;
+        transition: all 0.5s ease-in-out;
+      }
+
+      &.in-tmr, &.in-soon {
+        .student-name {
+          background-color: $uci-secondary-lt-gray;
+          color: $uci-secondary-dk-gray;
+        }
+        .time {
+          color: $uci-secondary-lt-gray;
+        }
+      }
+      &.just-left {
+        .student-name {
+          background-color: rgba($uci-secondary-orange, 0.8);
+          color: #000000;
+        }
+        .time {
+          color: $uci-secondary-lt-gray;
+        }
+      }
+      &.gone {
+        display: none;
+      }
+
+    }
   }
 
 }
