@@ -27,7 +27,7 @@ function Layout () {
                 </div>
               </Col>
               <Col xs="12">
-                <div className="pillbox">
+                <div className="pillbox student-schedule">
                   <h2 className="title">Student Schedule</h2>
                   <StudentSchedule {...calAuth.student} />
                 </div>

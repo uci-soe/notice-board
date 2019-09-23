@@ -66,6 +66,15 @@
 
   }
 
+
+  .student-schedule {
+    .calendar-events {
+      white-space: nowrap;
+      overflow-y: scroll;
+
+    }
+  }
+
   .calendar-events {
     $border-radius: 10px;
 
@@ -107,14 +116,55 @@
 
     }
 
+
     .student-event {
       background-color: $uci-primary-blue;
-      padding: 1.5em;
+      padding: 2em 1.5em 0.5em 1.5em;
       border-radius: 10px;
+      border-top: 0;
+      position: relative;
+      transition: all 0.5s ease-in-out;
 
+      .student-name {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1.75em;
+        line-height: 1.75em;
+        background-color: $uci-primary-yellow;
+        border-radius: $border-radius $border-radius 0 0;
+        font-size: 16px;
+        color: $uci-primary-blue;
+        transition: all 0.5s ease-in-out;
+      }
       .time {
         padding-bottom: 0;
+        transition: all 0.5s ease-in-out;
       }
+
+      &.in-tmr, &.in-soon {
+        .student-name {
+          background-color: $uci-secondary-lt-gray;
+          color: $uci-secondary-dk-gray;
+        }
+        .time {
+          color: $uci-secondary-lt-gray;
+        }
+      }
+      &.just-left {
+        .student-name {
+          background-color: rgba($uci-secondary-orange, 0.8);
+          color: #000000;
+        }
+        .time {
+          color: $uci-secondary-lt-gray;
+        }
+      }
+      &.gone {
+        display: none;
+      }
+
     }
   }
 
