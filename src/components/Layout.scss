@@ -173,4 +173,17 @@
     }
   }
 
+
+  .clock {
+    @extend .pillbox;
+    margin: 0;
+
+    position: absolute;
+    bottom: 3em;
+    right: 3em;
+
+    color: $uci-primary-yellow;
+    font-size: 20px;
+  }
+
 }

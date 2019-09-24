@@ -41,6 +41,7 @@
     ]
   },
   "dependencies": {
+    "date-fns": "^2.3.0",
     "notice-board-gcalendar": "github:uci-soe/notice-board-gcalendar",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",

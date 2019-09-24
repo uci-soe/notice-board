@@ -6,6 +6,7 @@ import {Noticeboard as Freshdesk} from 'notice-board-freshdesk';
 import {StudentSchedule, TechSchedule} from 'notice-board-gcalendar';
 
 import Background from './Background';
+import Clock from './Clock';
 import {NoTickets} from './NoContent';
 
 import './Layout.scss';
@@ -56,6 +57,9 @@ function Layout () {
             {/* TODO: Add Lower Ticker */}
           </Col>
         </Row>
+
+        <Clock />
+
       </Container>
     </div>
   );
