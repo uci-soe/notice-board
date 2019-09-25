@@ -53,16 +53,8 @@
         padding: 1.5em !important;
 
         .fr-tag {
-          color: $uci-primary-blue;
           padding: 0.5em 0.75em;
-        }
-
-        .fr-title {
-          margin-top: 0;
-        }
-        .fr-description {
-          margin-top: 0;
-          margin-bottom: 0;
+          max-width: 12.0em;
         }
       }
     }

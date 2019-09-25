@@ -47,7 +47,7 @@ function Layout () {
             <div className="pillbox freshdesk-height">
               <h2 className="title">Freshdesk Tickets</h2>
               <Simplebar className="scroll-wrapper">
-                <Freshdesk noTickets={NoTickets} subdomain='ucieducation' auth={fdeskAuth} displayResolved={true} />
+                <Freshdesk noTickets={NoTickets} subdomain='ucieducation' auth={fdeskAuth} displayResolved={false} />
               </Simplebar>
             </div>
           </Col>
